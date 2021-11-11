@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\ProjectCleanArch.Application\ProjectCleanArch.Application.csproj" />
+    <ProjectReference Include="..\..\Core\ProjectCleanArch.Domain\ProjectCleanArch.Domain.csproj" />
+    <ProjectReference Include="..\ProjectCleanArch.Data\ProjectCleanArch.Data.csproj" />
+  </ItemGroup>
+
+</Project>
