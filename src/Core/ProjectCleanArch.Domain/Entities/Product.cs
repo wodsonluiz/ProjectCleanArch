@@ -27,7 +27,7 @@ namespace ProjectCleanArch.Domain.Entities
             int stock,
             string image)
         {
-            DomainExceptionValidation.When(id < 0,"Invalid Id value");
+            DomainExceptionValidation.When(id < 0, "Invalid Id value");
             Id = id;
             ValidateDomain(name, description, price, stock, image);
         }
@@ -65,7 +65,7 @@ namespace ProjectCleanArch.Domain.Entities
 
             DomainExceptionValidation.When(stock < 0, "Invalid Stock value");
 
-            DomainExceptionValidation.When(image.Length > 250, "Invalid image name, too long, maximum 250 caracters");
+            DomainExceptionValidation.When(image?.Length > 250, "Invalid image name, too long, maximum 250 caracters");
 
             Name = name;
             Description = description;
