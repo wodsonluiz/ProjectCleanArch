@@ -6,7 +6,7 @@ namespace ProjectCleanArch.Domain.Interfaces
 {
     public interface ICategoryRepository
     {
-        Task<IEnumerable<Category>> GetCatoriesAsync();
+        Task<IEnumerable<Category>> GetCategoriesAsync();
 
         Task<Category> GetByIdAsync(int? id);
 

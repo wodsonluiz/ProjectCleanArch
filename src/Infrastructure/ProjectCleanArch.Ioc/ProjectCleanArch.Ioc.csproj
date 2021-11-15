@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\ProjectCleanArch.Application\ProjectCleanArch.Application.csproj" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Core\ProjectCleanArch.Domain\ProjectCleanArch.Domain.csproj" />
     <ProjectReference Include="..\ProjectCleanArch.Data\ProjectCleanArch.Data.csproj" />
   </ItemGroup>
