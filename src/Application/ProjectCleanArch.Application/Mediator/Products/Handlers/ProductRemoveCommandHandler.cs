@@ -14,7 +14,7 @@ namespace ProjectCleanArch.Application.Mediator.Products.Handlers
 
         public ProductRemoveCommandHandler(IProductRepository repository)
         {
-            _repository = repository;
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
         public async Task<Product> Handle(ProductRemoveCommand request, CancellationToken cancellationToken)
         {

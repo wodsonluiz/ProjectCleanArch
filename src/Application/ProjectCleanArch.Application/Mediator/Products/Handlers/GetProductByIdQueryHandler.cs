@@ -2,6 +2,7 @@
 using ProjectCleanArch.Application.Mediator.Products.Queries;
 using ProjectCleanArch.Domain.Entities;
 using ProjectCleanArch.Domain.Interfaces;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace ProjectCleanArch.Application.Mediator.Products.Handlers
 
         public GetProductByIdQueryHandler(IProductRepository repository)
         {
-            _repository = repository;
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
         public async Task<Product> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MediatR;
 using ProjectCleanArch.Application.DTOs;
 using ProjectCleanArch.Application.Interfaces;
 using ProjectCleanArch.Domain.Entities;
@@ -11,12 +12,12 @@ namespace ProjectCleanArch.Application.Services
 {
     public class ProductService : IProductService
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IMediator _mediator;
         private readonly IMapper _mapper;
 
-        public ProductService(IProductRepository productRepository, IMapper mapper)
+        public ProductService(IMapper mapper, IMediator mediator)
         {
-            _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 

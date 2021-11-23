@@ -13,7 +13,7 @@ namespace ProjectCleanArch.Application.Mediator.Products.Handlers
         private readonly IProductRepository _repository;
         public ProductCreateCommandHandler(IProductRepository repository)
         {
-            _repository = repository;
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
         public async Task<Product> Handle(ProductCreateCommand request, CancellationToken cancellationToken)
