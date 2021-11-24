@@ -30,6 +30,7 @@ namespace ProjectCleanArch.Ioc
 
             //AutoMapper
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+            services.AddAutoMapper(typeof(DTOToCommandMappingProfile));
 
             //Mediator
             var myHandlers = AppDomain.CurrentDomain.Load("ProjectCleanArch.Application");
