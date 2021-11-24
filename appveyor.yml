@@ -15,7 +15,4 @@ dotnet_csproj:
 build_script:
 - cmd: >-
     dotnet --version
-    dotnet restore ./src/Application/ProjectCleanArch.Application/ProjectCleanArch.Application.csproj --verbosity m 
-    dotnet restore ./src/Core/ProjectCleanArch.Domain/ProjectCleanArch.Domain.csproj --verbosity m
-    dotnet restore ./src/Infrastructure/ProjectCleanArch.Data/ProjectCleanArch.Data.csproj --verbosity m
-    dotnet restore ./src/UI/ProjectCleanArch.Api/ProjectCleanArch.Api.csproj --verbosity m
+    dotnet build --verbosity m
