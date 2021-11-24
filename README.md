@@ -12,5 +12,8 @@ Estamos buscando autoria em nosso trabalho.
 #### Onion Architecture - Arquitetura em cebolo
 #### D.D.D - Domain Driven Design 
 #### Inversion of Control (Ioc) - Inversão de Controle
+#### CQRS - Command Query Responsability Separation
+
+![image](https://user-images.githubusercontent.com/13908258/143156357-11bbba2a-d81d-48cb-8feb-ad2a447afc7a.png)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
