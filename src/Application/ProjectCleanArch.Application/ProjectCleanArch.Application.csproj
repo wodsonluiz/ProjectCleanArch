@@ -13,4 +13,9 @@
     <ProjectReference Include="..\..\Core\ProjectCleanArch.Domain\ProjectCleanArch.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mediator\Categories\Handlers\" />
+    <Folder Include="Mediator\Categories\Queries\" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectCleanArch.Application.Interfaces;
@@ -7,6 +8,7 @@ using ProjectCleanArch.Application.Services;
 using ProjectCleanArch.Data.Context;
 using ProjectCleanArch.Data.Repositories;
 using ProjectCleanArch.Domain.Interfaces;
+using System;
 
 namespace ProjectCleanArch.Ioc
 {
@@ -28,6 +30,11 @@ namespace ProjectCleanArch.Ioc
 
             //AutoMapper
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+
+            //Mediator
+            var myHandlers = AppDomain.CurrentDomain.Load("ProjectCleanArch.Application");
+            services.AddMediatR(myHandlers);
+
             return services;
         }
     }
