@@ -1,0 +1,21 @@
+pull_requests:
+  do_not_increment_build_number: true
+skip_non_tags: true
+image: Visual Studio 2019
+configuration: Release
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  version_prefix: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+build_script:
+- cmd: >-
+    dotnet --version
+    dotnet restore ./src/Application/ProjectCleanArch.Application/ProjectCleanArch.Application.csproj --verbosity m 
+    dotnet restore ./src/Core/ProjectCleanArch.Domain/ProjectCleanArch.Domain.csproj --verbosity m
+    dotnet restore ./src/Infrastructure/ProjectCleanArch.Data/ProjectCleanArch.Data.csproj --verbosity m
+    dotnet restore ./src/UI/ProjectCleanArch.Api/ProjectCleanArch.Api.csproj --verbosity m
