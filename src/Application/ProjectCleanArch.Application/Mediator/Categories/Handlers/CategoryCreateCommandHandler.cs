@@ -14,7 +14,7 @@ namespace ProjectCleanArch.Application.Mediator.Categories.Handlers
 
         public CategoryCreateCommandHandler(ICategoryRepository repository)
         {
-            _repository = repository;
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
         public async Task<Category> Handle(CategoryCreateCommand request, CancellationToken cancellationToken)
         {

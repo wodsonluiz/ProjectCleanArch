@@ -33,23 +33,23 @@ namespace ProjectCleanArch.Application.Services
 
             if (productyByIdQuery is null) throw new Exception($"Entity could not be loaded.");
 
-            var result = _mediator.Send(productyByIdQuery);
+            var result = await _mediator.Send(productyByIdQuery);
 
             return _mapper.Map<ProductDTO>(result);
         }
 
         public async Task<IEnumerable<ProductDTO>> GetProductsAsync()
         {
-            var productQuery = new GetProductsQuery();
+            var productsQuery = new GetProductsQuery();
 
-            if (productQuery is null) throw new ArgumentNullException(nameof(productQuery));
+            if (productsQuery is null) throw new Exception($"Entity could not be loaded.");
 
-            var result = await _mediator.Send(productQuery);
+            var result = await _mediator.Send(productsQuery);
 
             return _mapper.Map<IEnumerable<ProductDTO>>(result);
         }
 
-        public async Task Remove(int? id)
+        public async Task RemoveAsync(int? id)
         {
             var productRemoveCommand = new ProductRemoveCommand(id.Value);
 

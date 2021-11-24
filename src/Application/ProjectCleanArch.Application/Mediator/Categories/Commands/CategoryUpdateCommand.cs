@@ -1,9 +1,6 @@
-﻿using MediatR;
-using ProjectCleanArch.Domain.Entities;
-
-namespace ProjectCleanArch.Application.Mediator.Categories.Commands
+﻿namespace ProjectCleanArch.Application.Mediator.Categories.Commands
 {
-    public class CategoryUpdateCommand : IRequest<Category>
+    public class CategoryUpdateCommand : CategoryCommand
     {
         public int Id { get; set; }
     }

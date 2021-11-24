@@ -26,8 +26,7 @@ namespace ProjectCleanArch.Application.Mediator.Products.Handlers
             }
             else
             {
-                var result = await _repository.RemoveAsync(product);
-                return result;
+                return await _repository.RemoveAsync(product);
             }
         }
     }
