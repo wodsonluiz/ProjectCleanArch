@@ -2,8 +2,8 @@
 
 
 
-O objetivo desse projto, é aplicar de forma natural e palpável a todos, boas práticas de desenvolvimento de projeto. 
-Assim, buscando sempre escrever código que faça sentido para um humano. 
+O objetivo desse projto, é aplicar de forma natural e palpável a todos boas práticas de desenvolvimento de software. 
+Dessa forma, buscando sempre escrever código que faça sentido para um humano. 
 Estamos buscando autoria em nosso trabalho. 
 
 
