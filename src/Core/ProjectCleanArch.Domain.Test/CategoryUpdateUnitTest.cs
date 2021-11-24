@@ -6,7 +6,7 @@ using Xunit;
 
 namespace ProjectCleanArch.Domain.Test
 {
-    public class CategoryUnitTestUpdate
+    public class CategoryUpdateUnitTest
     {
         [Fact]
         public void Update_WhitValidParameters_ResultObjectState()

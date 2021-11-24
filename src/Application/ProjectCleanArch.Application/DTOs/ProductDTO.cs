@@ -35,7 +35,7 @@ namespace ProjectCleanArch.Application.DTOs
 
         [MaxLength(255)]
         [DisplayName("Iamage")]
-        public string Imgage { get; set; }
+        public string Image { get; set; }
 
         public Category Category { get; set; }
 

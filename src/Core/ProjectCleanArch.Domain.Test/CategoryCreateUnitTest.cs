@@ -6,7 +6,7 @@ using Xunit;
 
 namespace ProjectCleanArch.Domain.Test
 {
-    public class CategoryUnitTestCreate
+    public class CategoryCreateUnitTest
     {
         [Fact]
         public void CreateCategory_WhitValidParameters_ResultObjectState()
