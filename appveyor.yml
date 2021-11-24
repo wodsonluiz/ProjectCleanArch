@@ -15,4 +15,4 @@ dotnet_csproj:
 build_script:
 - cmd: >-
     dotnet --version
-    dotnet build --verbosity m
+    dotnet build --verbosity m 
