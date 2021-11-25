@@ -16,6 +16,6 @@ Estamos buscando autoria em nosso trabalho.
 
 ![image](https://user-images.githubusercontent.com/13908258/143156357-11bbba2a-d81d-48cb-8feb-ad2a447afc7a.png)
 
-## Teste unitário [xUnit]
+## Cobertura dos testes [xUnit]
 ![image](https://user-images.githubusercontent.com/13908258/143361723-edb32125-9c2a-4c5d-a018-22bb77f9b4f3.png)
 
