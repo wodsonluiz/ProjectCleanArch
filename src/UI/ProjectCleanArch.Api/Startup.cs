@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProjectCleanArch.Ioc;
+using Serilog;
 
 namespace ProjectCleanArch.Api
 {
@@ -21,6 +22,14 @@ namespace ProjectCleanArch.Api
         {
             services.AddControllers();
             services.AddInfrasTructure(Configuration);
+
+            Log.Logger = new LoggerConfiguration()
+                 .Enrich.WithProperty("Project", "ProjectCleanArch")
+                 .Enrich.WithProperty("Environment", "Local")
+                 .WriteTo.Seq("http://localhost:5341/")
+                 .CreateLogger();
+
+            services.AddSingleton(Log.Logger);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
