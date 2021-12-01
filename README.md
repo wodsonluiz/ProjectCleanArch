@@ -2,7 +2,7 @@
 
 
 
-O objetivo desse projto, é aplicar de forma natural e palpável a todos boas práticas de desenvolvimento de software. 
+O objetivo desse projeto, é aplicar de forma natural e palpável a todos boas práticas de desenvolvimento de software. 
 Dessa forma, buscando sempre escrever código que faça sentido para um humano. 
 Estamos buscando autoria em nosso trabalho. 
 
@@ -15,3 +15,7 @@ Estamos buscando autoria em nosso trabalho.
 #### CQRS - Command Query Responsability Separation
 
 ![image](https://user-images.githubusercontent.com/13908258/143156357-11bbba2a-d81d-48cb-8feb-ad2a447afc7a.png)
+
+## Cobertura dos testes [xUnit]
+![image](https://user-images.githubusercontent.com/13908258/143361723-edb32125-9c2a-4c5d-a018-22bb77f9b4f3.png)
+
