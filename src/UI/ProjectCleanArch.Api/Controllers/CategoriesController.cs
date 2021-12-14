@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProjectCleanArch.Application.DTOs;
 using ProjectCleanArch.Application.Interfaces;
-using Serilog;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
