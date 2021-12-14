@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using ProjectCleanArch.Api.Middleware;
 using ProjectCleanArch.Ioc;
 using Serilog;
+using Serilog.Sinks.Splunk;
 
 namespace ProjectCleanArch.Api
 {
@@ -28,6 +29,9 @@ namespace ProjectCleanArch.Api
                  .Enrich.WithProperty("Project", "ProjectCleanArch")
                  .Enrich.WithProperty("Environment", "Local")
                  .WriteTo.Seq("http://localhost:5341/")
+                 .WriteTo.EventCollector("http://mysplunk:8000/services/collector", 
+                                         "c7a3f439-b32b-41bb-ad3c-5240ce9eca38", 
+                                          new CompactSplunkJsonFormatter())
                  .CreateLogger();
 
             services.AddSingleton(Log.Logger);
