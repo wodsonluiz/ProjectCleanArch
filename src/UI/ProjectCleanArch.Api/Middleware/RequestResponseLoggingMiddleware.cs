@@ -49,8 +49,8 @@ namespace ProjectCleanArch.Api.Middleware
 
             request.Body = body;
 
-            _logger.Information(@"[Request] {method}, Host {host} BodyRequest{bodyRequest}", 
-                request.Method, 
+            _logger.Information(@"[Request] {method}, Host {host} BodyRequest{bodyRequest}",
+                request.Method,
                 request.Host + request.Path,
                 request.QueryString);
         }
@@ -63,7 +63,9 @@ namespace ProjectCleanArch.Api.Middleware
 
             response.Body.Seek(0, SeekOrigin.Begin);
 
-            _logger.Information(@"[Response] Status {statuscode} Text:{body}", response.StatusCode, body );
+            _logger.Information(@"[Response] Status {statuscode} Text:{body}", 
+                response.StatusCode, 
+                body);
         }
     }
 }

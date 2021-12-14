@@ -29,8 +29,8 @@ namespace ProjectCleanArch.Api
                  .Enrich.WithProperty("Project", "ProjectCleanArch")
                  .Enrich.WithProperty("Environment", "Local")
                  .WriteTo.Seq("http://localhost:5341/")
-                 .WriteTo.EventCollector("http://mysplunk:8000/services/collector", 
-                                         "c7a3f439-b32b-41bb-ad3c-5240ce9eca38", 
+                 .WriteTo.EventCollector("http://localhost:8000/services/collector",
+                                         "e7e61264-81cb-4ac9-b721-f482a48a1cb8", 
                                           new CompactSplunkJsonFormatter())
                  .CreateLogger();
 
