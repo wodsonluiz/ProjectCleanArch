@@ -13,18 +13,14 @@ namespace ProjectCleanArch.Api.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _service;
-        private readonly ILogger _logger;
-        public ProductsController(IProductService service, ILogger logger)
+        public ProductsController(IProductService service)
         {
             _service = service;
-            _logger = logger;
         }
 
         [HttpGet]
         public async Task<IEnumerable<ProductDTO>> Get()
         {
-            _logger.Information("Method {method}, {request}", HttpContext.Request.Method, HttpContext.Request.Path);
-
             var products = await _service.GetProductsAsync();
 
             return products;

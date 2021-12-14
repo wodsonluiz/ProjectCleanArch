@@ -13,19 +13,15 @@ namespace ProjectCleanArch.Api.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _service;
-        private readonly ILogger _logger;
 
-        public CategoriesController(ICategoryService service, ILogger logger)
+        public CategoriesController(ICategoryService service)
         {
             _service = service;
-            _logger = logger;
         }
 
         [HttpGet]
         public async Task<IEnumerable<CategoryDTO>> Get()
         {
-            _logger.Information("Method {method}, {request}", HttpContext.Request.Method, HttpContext.Request.Path);
-
             var categories = await _service.GetCategoriesAsync();
 
             return categories;

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProjectCleanArch.Api.Middleware;
 using ProjectCleanArch.Ioc;
 using Serilog;
 
@@ -41,6 +42,8 @@ namespace ProjectCleanArch.Api
             }
 
             app.UseRouting();
+
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
             app.UseAuthorization();
 
