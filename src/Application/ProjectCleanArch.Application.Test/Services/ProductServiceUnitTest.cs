@@ -3,6 +3,7 @@ using MediatR;
 using Moq;
 using Moq.AutoMock;
 using ProjectCleanArch.Application.DTOs;
+using ProjectCleanArch.Application.Mediator.Products.Commands;
 using ProjectCleanArch.Application.Mediator.Products.Queries;
 using ProjectCleanArch.Application.Services;
 using ProjectCleanArch.Application.Test.Builders;
@@ -65,6 +66,34 @@ namespace ProjectCleanArch.Application.Test.Services
 
             //Act
             Action action = () => service.GetByIdAsync(1).ConfigureAwait(false);
+
+            //Assert
+            action.Should().NotThrow();
+            action.Should().Equals(productDTO);
+            mocker.VerifyAll();
+        }
+
+        [Fact]
+        public void ProducService_CreateProduct_ResultProduct()
+        {
+            //Arrange
+            var mocker = new AutoMocker();
+
+            var productDTO = new ProductDTOBuilder()
+                .BuildDefault()
+                .Create();
+
+            var product = new ProductBuilder()
+                .BuildDefault()
+                .Create();
+
+            mocker.Setup<IMediator, Task<Product>>(x => x.Send(It.IsAny<ProductCreateCommand>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(product);
+
+            var service = mocker.CreateInstance<ProductService>();
+
+            //Act
+            Action action = () => service.AddAsync(productDTO).ConfigureAwait(false);
 
             //Assert
             action.Should().NotThrow();

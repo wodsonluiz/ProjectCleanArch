@@ -21,11 +21,13 @@ namespace ProjectCleanArch.Application.Services
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task AddAsync(CategoryDTO categoryDTO)
+        public async Task<CategoryDTO> AddAsync(CategoryDTO categoryDTO)
         {
             var categoryCreateCommand = _mapper.Map<CategoryCreateCommand>(categoryDTO);
 
-            await _mediator.Send(categoryCreateCommand);
+            var result = await _mediator.Send(categoryCreateCommand);
+
+            return _mapper.Map<CategoryDTO>(result);
         }
 
         public async Task<CategoryDTO> GetByIdAsync(int? id)

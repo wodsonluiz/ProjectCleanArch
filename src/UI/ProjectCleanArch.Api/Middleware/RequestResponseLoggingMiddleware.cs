@@ -37,18 +37,6 @@ namespace ProjectCleanArch.Api.Middleware
 
         private async Task FormatRequest(HttpRequest request)
         {
-            var body = request.Body;
-
-            request.EnableBuffering();
-
-            var buffer = new byte[Convert.ToInt32(request.ContentLength)];
-
-            await request.Body.ReadAsync(buffer, 0, buffer.Length);
-
-            var bodyAsText = Encoding.UTF8.GetString(buffer);
-
-            request.Body = body;
-
             _logger.Information(@"[Request] {method}, Host {host} BodyRequest{bodyRequest}",
                 request.Method,
                 request.Host + request.Path,

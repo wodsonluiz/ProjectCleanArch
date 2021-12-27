@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using ProjectCleanArch.Api.Middleware;
 using ProjectCleanArch.Ioc;
 using Serilog;
@@ -25,6 +26,7 @@ namespace ProjectCleanArch.Api
             services.AddControllers();
             services.AddInfrasTructure(Configuration);
 
+            // Configurando o Log SEQ e Splunk [Ainda falta finalizar o Splunk]
             Log.Logger = new LoggerConfiguration()
                  .Enrich.WithProperty("Project", "ProjectCleanArch")
                  .Enrich.WithProperty("Environment", "Local")
@@ -35,6 +37,13 @@ namespace ProjectCleanArch.Api
                  .CreateLogger();
 
             services.AddSingleton(Log.Logger);
+
+
+            // Configurando o serviço de documentação do Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project Clean Arch", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +52,8 @@ namespace ProjectCleanArch.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ExampleMediator v1"));
             }
 
             app.UseRouting();
