@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ProjectCleanArch.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _service;

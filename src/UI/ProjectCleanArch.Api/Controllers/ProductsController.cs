@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ProjectCleanArch.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _service;
