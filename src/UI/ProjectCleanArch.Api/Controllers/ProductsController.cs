@@ -38,7 +38,7 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("/{id}")]
+        [Route("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             await _service.RemoveAsync(id);
