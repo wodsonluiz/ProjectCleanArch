@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using ProjectCleanArch.Application.DTOs;
 using ProjectCleanArch.Application.Interfaces;
 using System.Collections.Generic;
@@ -37,6 +36,27 @@ namespace ProjectCleanArch.Api.Controllers
             }
 
             return BadRequest("Category not include");
+        }
+
+        [HttpDelete]
+        [Route("/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _service.RemoveAsync(id);
+
+            return NoContent();
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Alter([FromBody]CategoryDTO categoryDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _service.UpdateAsync(categoryDTO);
+                return Ok(result);
+            }
+            
+            return BadRequest("Category not update");
         }
     }
 }

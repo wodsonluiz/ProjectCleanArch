@@ -60,11 +60,13 @@ namespace ProjectCleanArch.Application.Services
             await _mediator.Send(productRemoveCommand);
         }
 
-        public async Task UpdateAsync(ProductDTO productDTO)
+        public async Task<ProductDTO> UpdateAsync(ProductDTO productDTO)
         {
             var productUpdateCommand = _mapper.Map<ProductUpdateCommand>(productDTO);
 
-            await _mediator.Send(productUpdateCommand);
+            var result = await _mediator.Send(productUpdateCommand);
+
+            return _mapper.Map<ProductDTO>(result);
         }
     }
 }

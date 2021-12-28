@@ -10,7 +10,7 @@ namespace ProjectCleanArch.Application.Interfaces
         Task<CategoryDTO> GetByIdAsync(int? id);
 
         Task<CategoryDTO> AddAsync(CategoryDTO categoryDTO);
-        Task UpdateAsync(CategoryDTO categoryDTO);
+        Task<CategoryDTO> UpdateAsync(CategoryDTO categoryDTO);
         Task RemoveAsync(int? id);
     }
 }

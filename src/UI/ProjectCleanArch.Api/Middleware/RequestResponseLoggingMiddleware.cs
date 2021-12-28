@@ -17,7 +17,7 @@ namespace ProjectCleanArch.Api.Middleware
 
         public async Task Invoke(HttpContext context)
         {
-            await FormatRequest(context.Request);
+            FormatRequest(context.Request);
 
             var originalBodyStream = context.Response.Body;
 
@@ -33,7 +33,7 @@ namespace ProjectCleanArch.Api.Middleware
             }
         }
 
-        private async Task FormatRequest(HttpRequest request)
+        private void FormatRequest(HttpRequest request)
         {
             _logger.Information(@"[Request] {method}, Host {host} BodyRequest{bodyRequest}",
                 request.Method,
