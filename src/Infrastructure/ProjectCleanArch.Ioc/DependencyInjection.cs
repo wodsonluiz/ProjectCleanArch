@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -6,7 +7,9 @@ using ProjectCleanArch.Application.Interfaces;
 using ProjectCleanArch.Application.Mappings;
 using ProjectCleanArch.Application.Services;
 using ProjectCleanArch.Data.Context;
+using ProjectCleanArch.Data.Identity;
 using ProjectCleanArch.Data.Repositories;
+using ProjectCleanArch.Domain.Auth;
 using ProjectCleanArch.Domain.Interfaces;
 using System;
 
@@ -19,6 +22,16 @@ namespace ProjectCleanArch.Ioc
             services.AddDbContext<ApplicationDbContext>(options => options
                 .UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+
+            //Identity
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddScoped<IAuthenticate, AuthenticateService>();
+            services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitialService>();
+
+            //services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Account/Login");
 
             //Repository
             services.AddScoped<IProductRepository, ProductRepository>();
