@@ -2,6 +2,7 @@
 using ProjectCleanArch.Data.Context;
 using ProjectCleanArch.Domain.Entities;
 using ProjectCleanArch.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -31,7 +32,11 @@ namespace ProjectCleanArch.Data.Repositories
 
         public async Task<IEnumerable<Product>> GetProductsAsync()
         {
-            return await _context.Products.ToListAsync();
+            var products = await _context.Products
+            .Include(c => c.Category)
+            .ToListAsync();
+
+            return products;
         }
 
         public async Task<Product> RemoveAsync(Product product)

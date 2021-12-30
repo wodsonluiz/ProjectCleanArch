@@ -19,11 +19,30 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ProductDTO>> Get()
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> Get()
         {
             var products = await _service.GetProductsAsync();
 
-            return products;
+            if (products == null)
+            {
+                return NotFound("Not found products");
+            }
+
+            return Ok(products);
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<ActionResult<ProductDTO>> Get(int id)
+        {
+            var product = await _service.GetByIdAsync(id);
+
+            if (product == null)
+            {
+                return NotFound("Not found product");
+            }
+
+            return Ok(product);
         }
 
         [HttpPost]

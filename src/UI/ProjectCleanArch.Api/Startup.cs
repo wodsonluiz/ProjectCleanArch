@@ -48,7 +48,7 @@ namespace ProjectCleanArch.Api
             seedUserRoleInitial.SeedRoles();
             seedUserRoleInitial.SeedUsers();
 
-            app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            //app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
             app.UseAuthentication();
             app.UseAuthorization();

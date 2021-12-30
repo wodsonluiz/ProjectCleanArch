@@ -39,7 +39,10 @@ namespace ProjectCleanArch.Data.Identity
 
         public void SeedUsers()
         {
-            if (_userManager.FindByEmailAsync("usuario@localhost").Result == null)
+            var hasUser = _userManager.FindByEmailAsync("usuario@localhost").Result;
+            var hasAdmin = _userManager.FindByEmailAsync("admin@localhost").Result;
+
+            if (hasUser == null)
             {
                 var user = new ApplicationUser();
                 user.UserName = "usuario@localhost";
@@ -58,7 +61,7 @@ namespace ProjectCleanArch.Data.Identity
                 }
             }
 
-            if (_userManager.FindByEmailAsync("admin@localhost").Result == null)
+            if (hasAdmin == null)
             {
                 var user = new ApplicationUser();
                 user.UserName = "admin@localhost";

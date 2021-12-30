@@ -19,7 +19,9 @@ namespace ProjectCleanArch.Application.Mediator.Products.Handlers
         }
         public async Task<IEnumerable<Product>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
         {
-            return await _repository.GetProductsAsync();
+            var products = await _repository.GetProductsAsync();
+
+            return products;
         }
     }
 }
