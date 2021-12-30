@@ -17,7 +17,7 @@ namespace ProjectCleanArch.Api.Model
 
         [DataType(DataType.Password)]
         [JsonProperty("confirm_password")]
-        [Compare("Password", ErrorMessage = "Password dont't match")]
+        //[Compare("Password", ErrorMessage = "Password dont't match")]
         public string ConfirmPassword { get; set; }
     }
 }

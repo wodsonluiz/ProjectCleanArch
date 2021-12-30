@@ -17,7 +17,10 @@ namespace ProjectCleanArch.Data.Identity
         }
         public void SeedRoles()
         {
-            if (!_roleManager.RoleExistsAsync("User").Result)
+            var hasRoleUser = _roleManager.RoleExistsAsync("User").Result;
+            var hasRoleAdmin = _roleManager.RoleExistsAsync("Admin").Result;
+
+            if (hasRoleUser == false)
             {
                 var role = new IdentityRole();
                 role.Name = "User";
@@ -25,7 +28,7 @@ namespace ProjectCleanArch.Data.Identity
                 _ = _roleManager.CreateAsync(role).Result;
             }
 
-            if (!_roleManager.RoleExistsAsync("Admin").Result)
+            if (hasRoleAdmin == false)
             {
                 var role = new IdentityRole();
                 role.Name = "Admin";
@@ -47,7 +50,7 @@ namespace ProjectCleanArch.Data.Identity
                 user.LockoutEnabled = false;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
-                var result = _userManager.CreateAsync(user, "numero#2021").Result;
+                var result = _userManager.CreateAsync(user, "Numero#2021").Result;
 
                 if (result.Succeeded)
                 {
@@ -66,7 +69,7 @@ namespace ProjectCleanArch.Data.Identity
                 user.LockoutEnabled = false;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
-                var result = _userManager.CreateAsync(user, "numero#2021").Result;
+                var result = _userManager.CreateAsync(user, "Numero#2021").Result;
 
                 if (result.Succeeded)
                 {

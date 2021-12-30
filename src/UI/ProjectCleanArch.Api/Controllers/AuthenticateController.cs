@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 namespace ProjectCleanArch.Api.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class AuthenticateController : ControllerBase
     {
         private readonly IAuthenticate _authentication;
@@ -15,6 +17,7 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpPost]
+        [Route("register")]
         public async Task<IActionResult> Register(RegisterRequest register)
         {
             var result = await _authentication.RegisterUser(register.Email, register.Password);
@@ -30,6 +33,7 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpPost]
+        [Route("login")]
         public async Task<IActionResult> Login(LoginResquest login)
         {
             var result = await _authentication.Autenticate(login.Email, login.Password);

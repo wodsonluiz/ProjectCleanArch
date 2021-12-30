@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjectCleanArch.Application.DTOs;
 using ProjectCleanArch.Application.Interfaces;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectCleanArch.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CategoriesController : ControllerBase
