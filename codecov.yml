@@ -1,16 +1,20 @@
-name: Codecovon:
-  push:
-    branches:
-      - master:
-  build:
-    name: Run rspec to generate code coverage
-    runs-on: ubuntu-lateststeps:
-    - uses: actions/checkout@master
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
-      with:
-        version: 2.6.x- name: Run test cases
-      run: |
-        bundle exec rspec
-      env:
-        CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+codecov:
+  require_ci_to_pass: yes
+
+coverage:
+  precision: 2
+  round: down
+  range: "70...100"
+
+parsers:
+  gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      method: no
+      macro: no
+
+comment:
+  layout: "reach,diff,flags,files,footer"
+  behavior: default
+  require_changes: no
