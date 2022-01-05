@@ -23,7 +23,7 @@ build_script:
     dotnet build --verbosity m 
 test_script:
 - cmd: >-
-    dotnet test --no-build --verbosity normal
+    dotnet test --verbosity normal
     
 # build:
 #   project: ProjectCleanArch.sln
