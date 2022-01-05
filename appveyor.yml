@@ -21,6 +21,7 @@ build_script:
 - cmd: >-
     dotnet --version
     dotnet build --verbosity m 
+    
 # test_script:
 # - env: >-
 #     CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
@@ -32,6 +33,7 @@ build_script:
 #   verbosity: minimal
   
 test_script:
+- dotnet test --verbosity normal
 - OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".src\Core\ProjectCleanArch.Domain.Test\bin\Debug\ProjectCleanArch.Domain.Test.dll -noshadow" -filter:"+[ProjectCleanArch.Domain.Test*]* -[ProjectCleanArch.Domain.Test*]*" -output:".\ProjectCleanArch.xml"
 - codecov -f "ProjectCleanArch.xml"
 
