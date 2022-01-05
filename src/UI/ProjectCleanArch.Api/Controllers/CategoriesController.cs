@@ -20,11 +20,22 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<CategoryDTO>> Get()
+        public async Task<ActionResult<IEnumerable<CategoryDTO>>> Get()
         {
             var categories = await _service.GetCategoriesAsync();
 
-            return categories;
+            return Ok(categories);
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<IActionResult> GetId(int id)
+        {
+            var category = await _service.GetByIdAsync(id);
+
+            if (category == null) return BadRequest("Category not found.");
+
+            return Ok(category);
         }
 
         [HttpPost]
@@ -41,16 +52,20 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
+            var category = await _service.GetByIdAsync(id);
+
+            if (category == null) return NotFound("Category not found");
+
             await _service.RemoveAsync(id);
 
             return NoContent();
         }
 
         [HttpPut]
-        public async Task<IActionResult> Alter([FromBody]CategoryDTO categoryDTO)
+        public async Task<IActionResult> Put([FromBody]CategoryDTO categoryDTO)
         {
             if (ModelState.IsValid)
             {

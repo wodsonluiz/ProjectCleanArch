@@ -33,14 +33,11 @@ namespace ProjectCleanArch.Api.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
-        public async Task<ActionResult<ProductDTO>> Get(int id)
+        public async Task<ActionResult<ProductDTO>> GetId(int id)
         {
             var product = await _service.GetByIdAsync(id);
 
-            if (product == null)
-            {
-                return NotFound("Not found product");
-            }
+            if (product == null) return NotFound("Products not found");
 
             return Ok(product);
         }
@@ -59,9 +56,13 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
+            var product = await _service.GetByIdAsync(id);
+
+            if (product == null) return NotFound("Product not found");
+
             await _service.RemoveAsync(id);
 
             return NoContent();
