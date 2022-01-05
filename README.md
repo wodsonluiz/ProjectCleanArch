@@ -13,7 +13,7 @@ Estamos buscando autoria em nosso trabalho.
 
 ## Abordagens e Partners de software aplicados
 
-| Attempt | #Status 
+| # | #Status 
 | :---: | :---: | 
 | Solid | :white_check_mark: |
 | Onion Architecture | :white_check_mark: |
