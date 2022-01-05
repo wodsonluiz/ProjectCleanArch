@@ -20,7 +20,7 @@ Estamos buscando autoria em nosso trabalho.
 | DDD | :white_check_mark: |
 | Inversion of Control | :white_check_mark: |
 | Cqrs | :white_check_mark: |
-| Unitofwork  | :construction: |
+| Unit of work  | :construction: |
 | .  | :construction: |
 | .  | :construction: |
 | .  | :construction: |
