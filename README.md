@@ -5,7 +5,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/0e0qfnp2kobgakl6/branch/master?svg=true)](https://ci.appveyor.com/project/wodsonluiz/projectcleanarch)
 
 
-O objetivo desse projeto, é aplicar de forma natural e palpável a todos boas práticas de desenvolvimento de software. 
+O objetivo desse projeto, é aplicar de forma natural e palpável boas práticas de desenvolvimento de software. 
 Dessa forma, buscando sempre escrever código que faça sentido para um humano. 
 Estamos buscando autoria em nosso trabalho. 
 
