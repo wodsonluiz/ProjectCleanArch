@@ -22,11 +22,11 @@ build_script:
     dotnet --version
     dotnet build --verbosity m 
     
-build:
-  project: ProjectCleanArch.sln
-  verbosity: minimal
+# build:
+#   project: ProjectCleanArch.sln
+#   verbosity: minimal
   
-test_script:
-- OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\MyUnitTests\bin\Debug\MyUnitTests.dll -noshadow" -filter:"+[UnitTestTargetProject*]* -[MyUnitTests*]*" -output:".\MyProject_coverage.xml"
-- codecov -f "MyProject_coverage.xml"
+# test_script:
+# - OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\MyUnitTests\bin\Debug\MyUnitTests.dll -noshadow" -filter:"+[UnitTestTargetProject*]* -[MyUnitTests*]*" -output:".\MyProject_coverage.xml"
+# - codecov -f "MyProject_coverage.xml"
 
