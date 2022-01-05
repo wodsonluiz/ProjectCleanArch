@@ -22,6 +22,8 @@ build_script:
     dotnet --version
     dotnet build --verbosity m 
 test_script:
+  env:
+    CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
 - cmd: >-
     dotnet test --verbosity normal
     
