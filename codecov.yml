@@ -1,7 +1,7 @@
 name: Codecovon:
   push:
     branches:
-      - masterjobs:
+      - master:
   build:
     name: Run rspec to generate code coverage
     runs-on: ubuntu-lateststeps:
