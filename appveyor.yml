@@ -32,6 +32,6 @@ build_script:
 #   verbosity: minimal
   
 test_script:
-- OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\MyUnitTests\bin\Debug\MyUnitTests.dll -noshadow" -filter:"+[UnitTestTargetProject*]* -[MyUnitTests*]*" -output:".\MyProject_coverage.xml"
+- OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".src\Core\ProjectCleanArch.Domain.Test\bin\Debug\ProjectCleanArch.Domain.Test.dll -noshadow" -filter:"+[ProjectCleanArch.Domain.Test*]* -[ProjectCleanArch.Domain.Test*]*" -output:".\ProjectCleanArch.xml"
 - codecov -f "ProjectCleanArch.xml"
 
