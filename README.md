@@ -21,6 +21,8 @@ Estamos buscando autoria em nosso trabalho.
 | Inversion of Control | :white_check_mark: |
 | Cqrs | :white_check_mark: |
 | Unit of work  | :construction: |
+| Identity Authentication  | :white_check_mark: |
+| Bearer Authentication com JWT | :white_check_mark: |
 | .  | :construction: |
 | .  | :construction: |
 | .  | :construction: |
