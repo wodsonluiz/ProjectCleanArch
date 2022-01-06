@@ -26,3 +26,5 @@ Estamos buscando autoria em nosso trabalho.
 | .  | :construction: |
 | .  | :construction: |
 | .  | :construction: |
+
+##### Se você curtiu, deixa um star no repositório :star:
