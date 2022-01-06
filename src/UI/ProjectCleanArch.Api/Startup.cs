@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using ProjectCleanArch.Api.Middleware;
 using ProjectCleanArch.Domain.Auth;
 using ProjectCleanArch.Ioc;
 
@@ -22,15 +20,11 @@ namespace ProjectCleanArch.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
             services.AddInfrasTructure(Configuration);
+            services.AddInfrasTructureJWT(Configuration);
+            services.AddInfrasTructureSwagger();
             services.CreateLoggingSingleton();
-
-            // Configurando o serviço de documentação do Swagger
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project Clean Arch", Version = "v1" });
-            });
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,14 +38,15 @@ namespace ProjectCleanArch.Api
             }
 
             app.UseRouting();
+            app.UseStatusCodePages();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             seedUserRoleInitial.SeedRoles();
             seedUserRoleInitial.SeedUsers();
 
+            //TODO arrumar isso...
             //app.UseMiddleware<RequestResponseLoggingMiddleware>();
-
-            app.UseAuthentication();
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

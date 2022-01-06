@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectCleanArch.Api.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CategoriesController : ControllerBase
@@ -33,7 +33,7 @@ namespace ProjectCleanArch.Api.Controllers
         {
             var category = await _service.GetByIdAsync(id);
 
-            if (category == null) return BadRequest("Category not found.");
+            if (category == null) return NotFound();
 
             return Ok(category);
         }
@@ -57,7 +57,7 @@ namespace ProjectCleanArch.Api.Controllers
         {
             var category = await _service.GetByIdAsync(id);
 
-            if (category == null) return NotFound("Category not found");
+            if (category == null) return BadRequest("Category not found");
 
             await _service.RemoveAsync(id);
 

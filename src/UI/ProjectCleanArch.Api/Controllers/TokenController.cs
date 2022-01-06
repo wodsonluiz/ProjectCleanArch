@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using ProjectCleanArch.Api.Model;
@@ -25,14 +26,14 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpPost]
-        [Route("loginuser")]
+        [AllowAnonymous]
+        [Route("loginu-ser")]
         public async Task<ActionResult<UserToken>> Login(LoginResquest login)
         {
             var result = await _authentication.Autenticate(login.Email, login.Password);
 
             if (result)
             {
-                //TODO Gerar token
                 return Ok(GenerateToken(login));
             }
             else
@@ -41,6 +42,24 @@ namespace ProjectCleanArch.Api.Controllers
 
                 return BadRequest();
             }
+        }
+
+        [HttpPost]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        [Authorize]
+        [Route("registers-user")]
+        public async Task<IActionResult> Register(LoginResquest register)
+        {
+            var result = await _authentication.RegisterUser(register.Email, register.Password);
+
+            if (!result)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid register attempt (password must be strong");
+
+                return BadRequest();
+            }
+
+            return Ok($"User {register.Email} create successfully");
         }
 
         private UserToken GenerateToken(LoginResquest login)

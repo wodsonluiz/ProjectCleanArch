@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectCleanArch.Api.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
@@ -37,7 +37,7 @@ namespace ProjectCleanArch.Api.Controllers
         {
             var product = await _service.GetByIdAsync(id);
 
-            if (product == null) return NotFound("Products not found");
+            if (product == null) return NotFound();
 
             return Ok(product);
         }
@@ -61,7 +61,7 @@ namespace ProjectCleanArch.Api.Controllers
         {
             var product = await _service.GetByIdAsync(id);
 
-            if (product == null) return NotFound("Product not found");
+            if (product == null) return BadRequest("Product not found");
 
             await _service.RemoveAsync(id);
 
