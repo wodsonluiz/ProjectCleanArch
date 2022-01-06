@@ -15,7 +15,5 @@ namespace ProjectCleanArch.Api.Model
         [DataType(DataType.Password)]
         [JsonProperty("password")]
         public string Password { get; set; }
-
-        public string ReturnUrl { get; set; }
     }
 }

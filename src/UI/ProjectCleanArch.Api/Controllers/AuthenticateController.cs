@@ -40,12 +40,7 @@ namespace ProjectCleanArch.Api.Controllers
 
             if (result)
             {
-                if (string.IsNullOrEmpty(login.ReturnUrl))
-                {
-                    return Ok("Return index");
-                }
-
-                return Ok(login.ReturnUrl);
+                return Ok();
             }
             else
             {

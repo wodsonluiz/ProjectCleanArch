@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectCleanArch.Api.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
