@@ -6,11 +6,6 @@
 [![codecov](https://codecov.io/gh/wodsonluiz/ProjectCleanArch/branch/master/graph/badge.svg?token=4AIRAN4GKE)](https://codecov.io/gh/wodsonluiz/ProjectCleanArch)
 
 
-O objetivo desse projeto, é aplicar de forma natural e palpável boas práticas de desenvolvimento de software. 
-Dessa forma, buscando sempre escrever código que faça sentido para um humano. 
-Estamos buscando autoria em nosso trabalho. 
-
-
 ## Abordagens e Partners de software aplicados
 
 | # | #Status 
