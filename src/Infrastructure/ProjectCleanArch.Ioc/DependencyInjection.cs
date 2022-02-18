@@ -31,8 +31,6 @@ namespace ProjectCleanArch.Ioc
             services.AddScoped<IAuthenticate, AuthenticateService>();
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitialService>();
 
-            //services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Account/Login");
-
             //Repository
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();

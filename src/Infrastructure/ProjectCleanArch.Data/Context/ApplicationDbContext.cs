@@ -20,6 +20,4 @@ namespace ProjectCleanArch.Data.Context
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
     }
-
-    
 }
