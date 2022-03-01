@@ -39,7 +39,6 @@ namespace ProjectCleanArch.Application.DTOs
         [MaxLength(255)]
         public string Image { get; set; }
 
-        [JsonProperty("category_id")]
         public int CategoryId { get; set; }
 
         [JsonProperty("category")]

@@ -1,5 +1,4 @@
 ﻿using ProjectCleanArch.Domain.Validation;
-using System.Collections.Generic;
 
 namespace ProjectCleanArch.Domain.Entities
 {

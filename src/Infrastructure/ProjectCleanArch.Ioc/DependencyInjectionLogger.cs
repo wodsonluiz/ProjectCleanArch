@@ -4,7 +4,7 @@ using Serilog;
 
 namespace ProjectCleanArch.Ioc
 {
-    public static class CreateLogger
+    public static class DependencyInjectionLogger
     {
         public static void CreateLoggingSingleton(this IServiceCollection services, IConfiguration configuration)
         {
