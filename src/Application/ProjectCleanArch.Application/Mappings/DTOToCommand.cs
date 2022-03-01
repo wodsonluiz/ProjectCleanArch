@@ -5,9 +5,9 @@ using ProjectCleanArch.Application.Mediator.Products.Commands;
 
 namespace ProjectCleanArch.Application.Mappings
 {
-    public class DTOToCommandMappingProfile : Profile
+    public class DTOToCommand : Profile
     {
-        public DTOToCommandMappingProfile()
+        public DTOToCommand()
         {
             CreateMap<ProductDTO, ProductCreateCommand>().ReverseMap();
             CreateMap<ProductDTO, ProductUpdateCommand>().ReverseMap();

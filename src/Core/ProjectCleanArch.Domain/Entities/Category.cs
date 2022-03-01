@@ -7,8 +7,6 @@ namespace ProjectCleanArch.Domain.Entities
     {
         public string Name { get; private set; }
 
-        public ICollection<Product> Products { get; set; }
-
         public Category(string name)
         {
             ValidateDomain(name);

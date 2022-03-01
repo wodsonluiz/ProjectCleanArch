@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProjectCleanArch.Api.Middleware;
 using ProjectCleanArch.Domain.Auth;
 using ProjectCleanArch.Ioc;
 
@@ -23,8 +24,12 @@ namespace ProjectCleanArch.Api
             services.AddInfrasTructure(Configuration);
             services.AddInfrasTructureJWT(Configuration);
             services.AddInfrasTructureSwagger();
-            services.CreateLoggingSingleton();
-            services.AddControllers();
+            services.CreateLoggingSingleton(Configuration);
+
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,8 +50,7 @@ namespace ProjectCleanArch.Api
             seedUserRoleInitial.SeedRoles();
             seedUserRoleInitial.SeedUsers();
 
-            //TODO arrumar isso...
-            //app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

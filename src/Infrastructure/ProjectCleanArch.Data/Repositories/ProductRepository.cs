@@ -26,7 +26,7 @@ namespace ProjectCleanArch.Data.Repositories
 
         public async Task<Product> GetByIdAsync(int? id)
         {
-            return await _context.Products.Include(c => c.Category)
+            return await _context.Products.Include(c => c.Id)
                 .SingleOrDefaultAsync(p => p.Id == id);
         }
 

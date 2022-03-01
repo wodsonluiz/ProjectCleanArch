@@ -42,7 +42,7 @@ namespace ProjectCleanArch.Application.DTOs
         [JsonProperty("category_id")]
         public int CategoryId { get; set; }
 
-        [JsonIgnore]
+        [JsonProperty("category")]
         public Category Category { get; set; }
     }
 }

@@ -40,8 +40,8 @@ namespace ProjectCleanArch.Ioc
             services.AddScoped<ICategoryService, CategoryService>();
 
             //AutoMapper
-            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
-            services.AddAutoMapper(typeof(DTOToCommandMappingProfile));
+            services.AddAutoMapper(typeof(DomainToDTO));
+            services.AddAutoMapper(typeof(DTOToCommand));
 
             //Mediator
             var myHandlers = AppDomain.CurrentDomain.Load("ProjectCleanArch.Application");
