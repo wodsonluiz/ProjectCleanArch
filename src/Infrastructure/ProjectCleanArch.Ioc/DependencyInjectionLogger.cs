@@ -9,13 +9,19 @@ namespace ProjectCleanArch.Ioc
     {
         public static void CreateLoggingSingleton(this IServiceCollection services, IConfiguration configuration)
         {
+            var logLevel = GetLevelLogg(configuration.GetSection("LogFile").GetSection("LogLevel").Value);
+
             Log.Logger = new LoggerConfiguration()
                  .WriteTo.Console()
                  .WriteTo.File(configuration.GetSection("LogFile").GetSection("Path").Value,
-                               restrictedToMinimumLevel: GetLevelLogg(configuration.GetSection("LogFile").GetSection("Path").Value))
-                 .Enrich.WithProperty("Project", configuration.GetSection("LogSeq").GetSection("Project").Value)
-                 .Enrich.WithProperty("Environment", configuration.GetSection("LogSeq").GetSection("Env").Value)
-                 .WriteTo.Seq(configuration.GetSection("LogSeq").GetSection("Host").Value)
+                               restrictedToMinimumLevel: logLevel,
+                               rollingInterval: RollingInterval.Day)
+                 .Enrich.WithProperty("Project", 
+                                      configuration.GetSection("LogSeq").GetSection("Project").Value)
+                 .Enrich.WithProperty("Environment", 
+                                      configuration.GetSection("LogSeq").GetSection("Env").Value)
+                 .WriteTo.Seq(configuration.GetSection("LogSeq").GetSection("Host").Value, 
+                              restrictedToMinimumLevel:logLevel)
                  .CreateLogger();
 
             services.AddSingleton(Log.Logger);
