@@ -41,7 +41,6 @@ namespace ProjectCleanArch.Application.Test.Services
 
             //Assert
             action.Should().NotThrow();
-            action.Should().Equals(productsDTO);
             mocker.VerifyAll();
         }
 
@@ -69,7 +68,6 @@ namespace ProjectCleanArch.Application.Test.Services
 
             //Assert
             action.Should().NotThrow();
-            action.Should().Equals(productDTO);
             mocker.VerifyAll();
         }
 
@@ -97,7 +95,6 @@ namespace ProjectCleanArch.Application.Test.Services
 
             //Assert
             action.Should().NotThrow();
-            action.Should().Equals(productDTO);
             mocker.VerifyAll();
         }
     }
