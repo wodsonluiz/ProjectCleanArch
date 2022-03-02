@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ProjectCleanArch.Application.Interfaces;
 using ProjectCleanArch.Application.Mappings;
 using ProjectCleanArch.Application.Services;
+using ProjectCleanArch.Data;
 using ProjectCleanArch.Data.Context;
 using ProjectCleanArch.Data.Identity;
 using ProjectCleanArch.Data.Repositories;
@@ -34,6 +35,8 @@ namespace ProjectCleanArch.Ioc
             //Repository
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+            services.AddScoped<UnitOfWork>();
 
             //Application
             services.AddScoped<IProductService, ProductService>();

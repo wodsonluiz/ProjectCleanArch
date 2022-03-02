@@ -26,11 +26,6 @@ namespace ProjectCleanArch.Api
             services.CreateLoggingSingleton(Configuration);
 
             services.AddControllers();
-
-            //services.AddControllersWithViews()
-            //    .AddNewtonsoftJson(options =>
-            //    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            //);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeedUserRoleInitial seedUserRoleInitial)
