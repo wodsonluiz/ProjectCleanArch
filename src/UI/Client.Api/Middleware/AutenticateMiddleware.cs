@@ -42,8 +42,8 @@ namespace Client.Api.Middleware
             var httpClient = new HttpClient();
             var body = new
             {
-                email = "wodsonluiz6@live.com",
-                password = "joao123"
+                email = _configuration["AuthApi:Email"],
+                password = _configuration["AuthApi:Pass"]
             };
 
             var content = JsonConvert.SerializeObject(body);
