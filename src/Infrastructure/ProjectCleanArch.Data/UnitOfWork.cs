@@ -8,10 +8,10 @@ namespace ProjectCleanArch.Data
 {
     public class UnitOfWork: IDisposable
     {
-        private readonly ApplicationDbContext _context;
-        private GenericRepository<Product> _productRepository;
-        private GenericRepository<Category> _categoryRepository;
-        private bool disposed = false;
+        readonly ApplicationDbContext _context;
+        GenericRepository<Product> _productRepository;
+        GenericRepository<Category> _categoryRepository;
+        bool disposed = false;
 
         public UnitOfWork(DbContextOptions<ApplicationDbContext> options)
         {
@@ -48,7 +48,7 @@ namespace ProjectCleanArch.Data
             GC.SuppressFinalize(this);
         }
 
-        public void Save()
+        public void Commit()
         {
             _context.SaveChanges();
         }
