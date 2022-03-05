@@ -1,6 +1,7 @@
 ﻿using Auth.Api.Models.Request;
 using Auth.Api.Models.Response;
 using Auth.Api.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -26,6 +27,7 @@ namespace Auth.Api.Controllers
         }
 
         [HttpPost]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [Route("register")]
         public async Task<ActionResult> Register([FromBody]RegisterRequest register)
         {
@@ -43,6 +45,7 @@ namespace Auth.Api.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [Route("user-token")]
         public async Task<ActionResult> UserToken([FromBody]RegisterRequest register)
         {

@@ -1,14 +1,13 @@
-using Auth.Api.Models;
-using Auth.Api.Service;
+using Client.Api.Middleware;
+using Client.Api.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
-using ProjectCleanArch.Ioc;
+using Microsoft.OpenApi.Models;
 
-namespace Auth.Api
+namespace Client.Api
 {
     public class Startup
     {
@@ -19,31 +18,34 @@ namespace Auth.Api
 
         public IConfiguration Configuration { get; }
 
+        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddInfrasTructureSwagger();
-            services.CreateLoggingSingleton(Configuration);
-            services.Configure<UserDatabaseSettings>(Configuration.GetSection(nameof(UserDatabaseSettings)));
-            services.AddSingleton<IUserDatabaseSettings>(sp => sp.GetRequiredService<IOptions<UserDatabaseSettings>>().Value);
-
-            services.AddScoped<IUserService, UserService>();
-
+            services.AddScoped<IProductService, ProductService>();
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Client.Api", Version = "v1" });
+            });
+
+            services.AddMemoryCache();
         }
 
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Auth.Api v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Client.Api v1"));
             }
 
             app.UseRouting();
 
-            app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseMiddleware<AutenticateMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
