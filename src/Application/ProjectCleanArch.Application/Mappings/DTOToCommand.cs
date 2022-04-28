@@ -9,11 +9,11 @@ namespace ProjectCleanArch.Application.Mappings
     {
         public DTOToCommand()
         {
-            CreateMap<ProductDTO, ProductCreateCommand>().ReverseMap();
-            CreateMap<ProductDTO, ProductUpdateCommand>().ReverseMap();
+            CreateMap<ProductDto, ProductCreateCommand>().ReverseMap();
+            CreateMap<ProductDto, ProductUpdateCommand>().ReverseMap();
 
-            CreateMap<CategoryDTO, CategoryCreateCommand>().ReverseMap();
-            CreateMap<CategoryDTO, CategoryUpdateCommand>().ReverseMap();
+            CreateMap<CategoryDto, CategoryCreateCommand>().ReverseMap();
+            CreateMap<CategoryDto, CategoryUpdateCommand>().ReverseMap();
         }
     }
 }

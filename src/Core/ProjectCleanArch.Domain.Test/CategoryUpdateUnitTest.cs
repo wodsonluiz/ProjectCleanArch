@@ -18,7 +18,7 @@ namespace ProjectCleanArch.Domain.Test
             Action action = () => categoy.Update("Category Name update");
 
             //Assert
-            action.Should().NotThrow<DomainExceptionValidation>();
+            action.Should().NotThrow<DomainValidationException>();
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace ProjectCleanArch.Domain.Test
             Action action = () => categoy.Update(null);
 
             //Assert
-            action.Should().Throw<DomainExceptionValidation>();
+            action.Should().Throw<DomainValidationException>();
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace ProjectCleanArch.Domain.Test
             Action action = () => categoy.Update("");
 
             //Assert
-            action.Should().Throw<DomainExceptionValidation>()
+            action.Should().Throw<DomainValidationException>()
                 .WithMessage("Invalid Name is required");
         }
     }

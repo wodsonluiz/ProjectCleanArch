@@ -20,14 +20,7 @@ namespace ProjectCleanArch.Application.Mediator.Categories.Handlers
         {
             var category = new Category(request.Name);
 
-            if (category is null)
-            {
-                throw new ApplicationException($"Error creating entity.");
-            }
-            else
-            {
-                return await _repository.CreateAsync(category);
-            }
+            return await _repository.CreateAsync(category);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace ProjectCleanArch.Domain.Test
         {
             Action action = () => new Product(1, "Product Name", "Produc Description", 9.99m, 99, "product image");
 
-            action.Should().NotThrow<DomainExceptionValidation>();
+            action.Should().NotThrow<DomainValidationException>();
         }
 
         [Fact]
@@ -21,7 +21,7 @@ namespace ProjectCleanArch.Domain.Test
         {
             Action action = () => new Product(-1, "Product Name", "Produc Description", 9.99m, 99, "product image");
 
-            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid Id value");
+            action.Should().Throw<DomainValidationException>().WithMessage("Invalid Id value");
         }
 
         [Fact]
@@ -29,7 +29,7 @@ namespace ProjectCleanArch.Domain.Test
         {
             Action action = () => new Product(1, "Pr", "Produc Description", 9.99m, 99, "product image");
 
-            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid length to Name. Minimum 3 caracters");
+            action.Should().Throw<DomainValidationException>().WithMessage("Invalid length to Name. Minimum 3 caracters");
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace ProjectCleanArch.Domain.Test
 
             Action action = () => new Product(1, "Product name", "Produc Description", 9.99m, 99, nameImage);
 
-            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid image name, too long, maximum 250 caracters");
+            action.Should().Throw<DomainValidationException>().WithMessage("Invalid image name, too long, maximum 250 caracters");
         }
 
         [Fact]
@@ -49,7 +49,7 @@ namespace ProjectCleanArch.Domain.Test
         {
             Action action = () => new Product(1, "Product Name", "Produc Description", 9.99m, 99, null);
 
-            action.Should().NotThrow<DomainExceptionValidation>();
+            action.Should().NotThrow<DomainValidationException>();
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace ProjectCleanArch.Domain.Test
         {
             Action action = () => new Product(1, "Product Name", "Produc Description", 9.99m, 99, "");
 
-            action.Should().NotThrow<DomainExceptionValidation>();
+            action.Should().NotThrow<DomainValidationException>();
         }
 
         [Theory]
@@ -74,7 +74,7 @@ namespace ProjectCleanArch.Domain.Test
         {
             Action action = () => new Product(1, "Product Name", "Produc Description", 9.99m, stock, "Image name");
 
-            action.Should().Throw<DomainExceptionValidation>()
+            action.Should().Throw<DomainValidationException>()
                 .WithMessage("Invalid Stock value");
         }
     }

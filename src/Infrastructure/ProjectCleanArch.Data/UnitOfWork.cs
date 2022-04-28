@@ -6,7 +6,7 @@ using ProjectCleanArch.Domain.Entities;
 
 namespace ProjectCleanArch.Data
 {
-    public class UnitOfWork: IDisposable
+    public class UnitOfWork : IDisposable
     {
         readonly ApplicationDbContext _context;
         GenericRepository<Product> _productRepository;
@@ -55,12 +55,9 @@ namespace ProjectCleanArch.Data
 
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
+            if (disposing && _context != null)
             {
-                if (_context != null)
-                {
-                    _context.Dispose();
-                }
+                _context.Dispose();
             }
             disposed = true;
         }

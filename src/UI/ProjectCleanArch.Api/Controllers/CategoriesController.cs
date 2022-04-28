@@ -20,7 +20,7 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CategoryDTO>>> Get()
+        public async Task<ActionResult<IEnumerable<CategoryDto>>> Get()
         {
             var categories = await _service.GetCategoriesAsync();
 
@@ -39,7 +39,7 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CategoryDTO categoryDTO)
+        public async Task<IActionResult> Post([FromBody] CategoryDto categoryDTO)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody]CategoryDTO categoryDTO)
+        public async Task<IActionResult> Put([FromBody]CategoryDto categoryDTO)
         {
             if (ModelState.IsValid)
             {

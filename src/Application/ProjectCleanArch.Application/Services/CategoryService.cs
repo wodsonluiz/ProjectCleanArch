@@ -21,53 +21,47 @@ namespace ProjectCleanArch.Application.Services
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<CategoryDTO> AddAsync(CategoryDTO categoryDTO)
+        public async Task<CategoryDto> AddAsync(CategoryDto categoryDTO)
         {
             var categoryCreateCommand = _mapper.Map<CategoryCreateCommand>(categoryDTO);
 
             var result = await _mediator.Send(categoryCreateCommand);
 
-            return _mapper.Map<CategoryDTO>(result);
+            return _mapper.Map<CategoryDto>(result);
         }
 
-        public async Task<CategoryDTO> GetByIdAsync(int? id)
+        public async Task<CategoryDto> GetByIdAsync(int? id)
         {
             var categoryByIdQuery = new GetCategoryByIdQuery(id.Value);
 
-            if (categoryByIdQuery is null) throw new Exception($"Entity could not be loaded.");
-
             var result = await _mediator.Send(categoryByIdQuery);
 
-            return _mapper.Map<CategoryDTO>(result);
+            return _mapper.Map<CategoryDto>(result);
         }
 
-        public async Task<IEnumerable<CategoryDTO>> GetCategoriesAsync()
+        public async Task<IEnumerable<CategoryDto>> GetCategoriesAsync()
         {
             var categoriesQuery = new GetCategoriesQuery();
 
-            if (categoriesQuery is null) throw new Exception($"Entity could not be loaded.");
-
             var result = await _mediator.Send(categoriesQuery);
 
-            return _mapper.Map<IEnumerable<CategoryDTO>>(result);
+            return _mapper.Map<IEnumerable<CategoryDto>>(result);
         }
 
         public async Task RemoveAsync(int? id)
         {
             var categoryRemoveCommand = new CategoryRemoveCommand(id.Value);
 
-            if (categoryRemoveCommand is null) throw new Exception($"Entity could not be loaded.");
-
             await _mediator.Send(categoryRemoveCommand);
         }
 
-        public async Task<CategoryDTO> UpdateAsync(CategoryDTO categoryDTO)
+        public async Task<CategoryDto> UpdateAsync(CategoryDto categoryDTO)
         {
             var categoryUpdateCommand = _mapper.Map<CategoryUpdateCommand>(categoryDTO);
 
             var result = await _mediator.Send(categoryUpdateCommand);
 
-            return _mapper.Map<CategoryDTO>(result);
+            return _mapper.Map<CategoryDto>(result);
         }
     }
 }

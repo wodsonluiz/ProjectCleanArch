@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjectCleanArch.Application.DTOs
 {
-    public class CategoryDTO
+    public class CategoryDto
     {
         [JsonProperty("id")]
         public int Id { get; set; }

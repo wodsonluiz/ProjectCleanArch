@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace ProjectCleanArch.Application.Test.Builders
 {
-    public class ProductDTOBuilder
+    public class ProductDtoBuilder
     {
-        private ProductDTO _productDTO;
-        private IEnumerable<ProductDTO> _productsDTO;
-        public ProductDTOBuilder() { }
+        private ProductDto _productDTO;
+        private IEnumerable<ProductDto> _productsDTO;
+        public ProductDtoBuilder() { }
 
-        public ProductDTOBuilder BuildDefault()
+        public ProductDtoBuilder BuildDefault()
         {
-            _productDTO = new ProductDTO()
+            _productDTO = new ProductDto()
             {
                 Id = 1,
                 Name = "Material default",
@@ -24,46 +24,46 @@ namespace ProjectCleanArch.Application.Test.Builders
             return this;
         }
 
-        public ProductDTOBuilder SetName(string value)
+        public ProductDtoBuilder SetName(string value)
         {
             _productDTO.Name = value;
 
             return this;
         }
 
-        public ProductDTOBuilder SetDescription(string value)
+        public ProductDtoBuilder SetDescription(string value)
         {
             _productDTO.Description = value;
 
             return this;
         }
 
-        public ProductDTOBuilder SetImage(string value)
+        public ProductDtoBuilder SetImage(string value)
         {
             _productDTO.Image = value;
 
             return this;
         }
 
-        public ProductDTOBuilder SetPrice(decimal value)
+        public ProductDtoBuilder SetPrice(decimal value)
         {
             _productDTO.Price = value;
 
             return this;
         }
 
-        public ProductDTOBuilder SetStock(int value)
+        public ProductDtoBuilder SetStock(int value)
         {
             _productDTO.Stock = value;
 
             return this;
         }
 
-        public ProductDTO Create() => _productDTO;
+        public ProductDto Create() => _productDTO;
 
-        public IEnumerable<ProductDTO> CreateList()
+        public IEnumerable<ProductDto> CreateList()
         {
-            _productsDTO = new List<ProductDTO> { _productDTO };
+            _productsDTO = new List<ProductDto> { _productDTO };
 
             return _productsDTO;
         }

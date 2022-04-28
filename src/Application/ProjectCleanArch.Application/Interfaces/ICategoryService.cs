@@ -6,11 +6,11 @@ namespace ProjectCleanArch.Application.Interfaces
 {
     public interface ICategoryService
     {
-        Task<IEnumerable<CategoryDTO>> GetCategoriesAsync();
-        Task<CategoryDTO> GetByIdAsync(int? id);
+        Task<IEnumerable<CategoryDto>> GetCategoriesAsync();
+        Task<CategoryDto> GetByIdAsync(int? id);
 
-        Task<CategoryDTO> AddAsync(CategoryDTO categoryDTO);
-        Task<CategoryDTO> UpdateAsync(CategoryDTO categoryDTO);
+        Task<CategoryDto> AddAsync(CategoryDto categoryDTO);
+        Task<CategoryDto> UpdateAsync(CategoryDto categoryDTO);
         Task RemoveAsync(int? id);
     }
 }

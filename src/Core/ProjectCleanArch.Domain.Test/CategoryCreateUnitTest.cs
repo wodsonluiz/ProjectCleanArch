@@ -15,7 +15,7 @@ namespace ProjectCleanArch.Domain.Test
             Action action = () => new Category(1, "Category Name");
 
             //Assert
-            action.Should().NotThrow<DomainExceptionValidation>();
+            action.Should().NotThrow<DomainValidationException>();
         }
 
         [Fact]
@@ -25,7 +25,7 @@ namespace ProjectCleanArch.Domain.Test
             Action action = () => new Category(1, null);
 
             //Assert
-            action.Should().Throw<DomainExceptionValidation>();
+            action.Should().Throw<DomainValidationException>();
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace ProjectCleanArch.Domain.Test
             Action action = () => new Category(1, "");
 
             //Assert
-            action.Should().Throw<DomainExceptionValidation>()
+            action.Should().Throw<DomainValidationException>()
                 .WithMessage("Invalid Name is required");
         }
 
@@ -46,7 +46,7 @@ namespace ProjectCleanArch.Domain.Test
             Action action = () => new Category(1, "Ca");
 
             //Assert
-            action.Should().Throw<DomainExceptionValidation>()
+            action.Should().Throw<DomainValidationException>()
                 .WithMessage("Invalid length to Name. Minimum 3 caracters");
         }
 
@@ -57,7 +57,7 @@ namespace ProjectCleanArch.Domain.Test
             Action action = () => new Category(-1, "Invalid Id Value");
 
             //Assert
-            action.Should().Throw<DomainExceptionValidation>()
+            action.Should().Throw<DomainValidationException>()
                 .WithMessage("Invalid Id Value");
         }
     }

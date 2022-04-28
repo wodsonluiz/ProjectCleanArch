@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectCleanArch.Application.DTOs
 {
-    public class ProductDTO
+    public class ProductDto
     {
         [JsonProperty("id")]
         public int Id { get; set; }

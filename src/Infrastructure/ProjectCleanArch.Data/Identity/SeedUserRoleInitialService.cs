@@ -20,7 +20,7 @@ namespace ProjectCleanArch.Data.Identity
             var hasRoleUser = _roleManager.RoleExistsAsync("User").Result;
             var hasRoleAdmin = _roleManager.RoleExistsAsync("Admin").Result;
 
-            if (hasRoleUser == false)
+            if (!hasRoleUser)
             {
                 var role = new IdentityRole();
                 role.Name = "User";
@@ -28,7 +28,7 @@ namespace ProjectCleanArch.Data.Identity
                 _ = _roleManager.CreateAsync(role).Result;
             }
 
-            if (hasRoleAdmin == false)
+            if (!hasRoleAdmin)
             {
                 var role = new IdentityRole();
                 role.Name = "Admin";

@@ -26,7 +26,7 @@ namespace Client.Api.Middleware
 
         public async Task Invoke(HttpContext context)
         {
-            var cacheEntry = _cache.GetOrCreate("TokeAuthApi", entry =>
+            _ = _cache.GetOrCreate("TokeAuthApi", entry =>
             {
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10);
                 entry.SetPriority(CacheItemPriority.High);

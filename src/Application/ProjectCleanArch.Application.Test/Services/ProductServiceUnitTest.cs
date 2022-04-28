@@ -25,11 +25,9 @@ namespace ProjectCleanArch.Application.Test.Services
             //Arrange
             var mocker = new AutoMocker();
 
-            var productsDTO = new ProductDTOBuilder()
+            var products = new ProductBuilder()
                 .BuildDefault()
                 .CreateList();
-
-            var products = new ProductBuilder().BuildDefault().CreateList();
 
             mocker.Setup<IMediator, Task<IEnumerable<Product>>>(x => x.Send(It.IsAny<GetProductsQuery>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(products);
@@ -49,10 +47,6 @@ namespace ProjectCleanArch.Application.Test.Services
         {
             //Arrange
             var mocker = new AutoMocker();
-
-            var productDTO = new ProductDTOBuilder()
-                .BuildDefault()
-                .Create();
 
             var product = new ProductBuilder()
                 .BuildDefault()
@@ -77,7 +71,7 @@ namespace ProjectCleanArch.Application.Test.Services
             //Arrange
             var mocker = new AutoMocker();
 
-            var productDTO = new ProductDTOBuilder()
+            var productDto = new ProductDtoBuilder()
                 .BuildDefault()
                 .Create();
 
@@ -91,7 +85,7 @@ namespace ProjectCleanArch.Application.Test.Services
             var service = mocker.CreateInstance<ProductService>();
 
             //Act
-            Action action = () => service.AddAsync(productDTO).ConfigureAwait(false);
+            Action action = () => service.AddAsync(productDto).ConfigureAwait(false);
 
             //Assert
             action.Should().NotThrow();

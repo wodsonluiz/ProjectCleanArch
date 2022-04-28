@@ -19,7 +19,7 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductDTO>>> Get()
+        public async Task<ActionResult<IEnumerable<ProductDto>>> Get()
         {
             var products = await _service.GetProductsAsync();
 
@@ -33,7 +33,7 @@ namespace ProjectCleanArch.Api.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
-        public async Task<ActionResult<ProductDTO>> GetId(int id)
+        public async Task<ActionResult<ProductDto>> GetId(int id)
         {
             var product = await _service.GetByIdAsync(id);
 
@@ -43,7 +43,7 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] ProductDTO productDTO)
+        public async Task<IActionResult> Post([FromBody] ProductDto productDTO)
         {
             if (ModelState.IsValid)
             {
@@ -69,7 +69,7 @@ namespace ProjectCleanArch.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Alter([FromBody]ProductDTO productDTO)
+        public async Task<IActionResult> Alter([FromBody]ProductDto productDTO)
         {
             if (ModelState.IsValid)
             {
