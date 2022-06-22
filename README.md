@@ -34,6 +34,7 @@
 | :---: | :---: | 
 | Integration with Auth.Api | :white_check_mark: |
 | Resilience  | :construction: |
+| Resilience With Circuit Breaker | :construction: |
 | Logs  | :construction: |
 | .  | :construction: |
 | .  | :construction: |
