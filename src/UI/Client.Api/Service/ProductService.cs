@@ -11,23 +11,24 @@ namespace Client.Api.Service
 {
     public class ProductService : IProductService
     {
-        private readonly HttpClient _client;
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public ProductService(IConfiguration configuration, IMemoryCache cache)
+        public ProductService(IConfiguration configuration, IMemoryCache cache, IHttpClientFactory httpClientFactory)
         {
-            _client = new HttpClient();
             _configuration = configuration;
             _cache = cache;
+            _httpClientFactory = httpClientFactory;
         }
 
         public async Task<IEnumerable<ProductDto>> GetProducts()
         {
             var tokenCache = await _cache.Get<Task<TokenResponse>>("TokeAuthApi");
+            var client = _httpClientFactory.CreateClient();
 
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenCache.Token);
-            var response = await _client.GetAsync($"{_configuration["ProductsApi:Host"]}/products");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenCache.Token);
+            var response = await client.GetAsync($"{_configuration["ProductsApi:Host"]}/products");
             response.EnsureSuccessStatusCode();
 
             var bodyResponse = await response.Content.ReadAsStringAsync();

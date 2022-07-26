@@ -11,17 +11,19 @@ using System.Threading.Tasks;
 
 namespace Client.Api.Middleware
 {
-    public class AutenticateMiddleware
+    public class AuthenticateMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly IMemoryCache _cache;
         private readonly IConfiguration _configuration;
+        private readonly IHttpClientFactory _httpClientFactory; 
 
-        public AutenticateMiddleware(RequestDelegate next, IMemoryCache cache, IConfiguration configuration)
+        public AuthenticateMiddleware(RequestDelegate next, IMemoryCache cache, IConfiguration configuration, IHttpClientFactory httpClientFactory)
         {
             _next = next;
             _cache = cache;
             _configuration = configuration;
+            _httpClientFactory = httpClientFactory;
         }
 
         public async Task Invoke(HttpContext context)
@@ -39,7 +41,8 @@ namespace Client.Api.Middleware
 
         private async Task<TokenResponse> GenerateToken()
         {
-            var httpClient = new HttpClient();
+            var httpClient = _httpClientFactory.CreateClient();
+            
             var body = new
             {
                 email = _configuration["AuthApi:Email"],
